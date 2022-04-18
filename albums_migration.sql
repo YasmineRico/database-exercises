@@ -13,4 +13,5 @@ CREATE TABLE albums(
 );
 
 DESCRIBE albums;
+SHOW CREATE TABLE albums;
 
