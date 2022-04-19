@@ -8,10 +8,11 @@ WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY first_name ASC;
 
 
-#Find all employees whose last name starts with 'E' — 7,330 rows.
+#Update the query to order by first name and then last name. The first result should now be Irena Acton and the last should be Vidya Zweizig.
 SELECT *
 FROM employees
-WHERE last_name LIKE 'E%';
+WHERE first_name IN ('Irena', 'Vidya', 'Maya')
+ORDER BY first_name ASC, last_name ASC;
 
 #Find all employees with a 'q' in their last name — 1,873 rows.
 SELECT *
