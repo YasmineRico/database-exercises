@@ -14,10 +14,11 @@ FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY first_name ASC, last_name ASC;
 
-#Find all employees with a 'q' in their last name — 1,873 rows.
-SELECT *
+#Change the ORDER BY clause so that you order by last name before first name. Your first result should still be Irena Acton but now the last result should be Maya Zyda.
+SELECT first_name, last_name
 FROM employees
-WHERE last_name LIKE '%q%';
+WHERE first_name IN ('Irena', 'Vidya', 'Maya')
+ORDER BY last_name ASC, first_name ASC;
 
 #Update your query for 'Irena', 'Vidya', or 'Maya' to use OR instead of IN — 709 rows. -- Changed line 5
 
