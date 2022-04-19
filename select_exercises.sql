@@ -1,14 +1,14 @@
 USE codeup_test_db;
 
-SELECT name AS 'These are the ablums from:'
+SELECT name AS 'These are the ablums from Pink Floyd:'
 FROM albums
 WHERE artist = 'Pink Floyd';
 
-SELECT release_date AS 'The year Sgt. Pepper''s Lonely Hearts Club Band was released: '
+SELECT release_date AS 'Sgt. Pepper''s Lonely Hearts Club Band was released in: '
 FROM albums
 WHERE name = 'Sgt. Pepper''s Lonely Hearts Club Band';
 
-SELECT genre AS 'The genre for Nevermind album: '
+SELECT genre AS 'The genre for Nirvanas Nevermind album: '
 FROM albums
 WHERE name = 'Nevermind';
 
