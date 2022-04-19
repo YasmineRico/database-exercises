@@ -20,25 +20,16 @@ FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY last_name ASC, first_name ASC;
 
-#Update your query for 'Irena', 'Vidya', or 'Maya' to use OR instead of IN — 709 rows. -- Changed line 5
-
-
-#Add a condition to the previous query to find everybody with those names who is also male — 441 rows. -- changed line 5
-
-#Find all employees whose last name starts or ends with 'E' — 30,723 rows.
-SELECT last_name
+#Update your queries for employees with 'e' in their last name to sort the results by their employee number. Make sure the employee numbers are in the correct order.
+SELECT *
 FROM employees
-WHERE last_name LIKE '%E';
+WHERE last_name LIKE 'E%'
+   OR last_name LIKE '%E'
+ORDER BY emp_no ASC;
 
-#Duplicate the previous query and update it to find all employees whose last name starts and ends with 'E' — 899 rows.
-SELECT last_name
-From employees
-Where last_name LIKE 'E%'
-  AND last_name Like '%E';
-
-#Find all employees with a 'q' in their last name but not 'qu' — 547 rows.
-
-SELECT last_name
+#Now reverse the sort order for both queries and compare results.
+SELECT *
 FROM employees
-WHERE last_name LIKE '%q%'
-          AND last_name NOT LIKE '%qu%';
+WHERE last_name LIKE 'E%'
+   OR last_name LIKE '%E'
+ORDER BY emp_no DESC;
