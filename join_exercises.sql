@@ -85,6 +85,17 @@ GROUP BY t.title;
 #| Sales              | Hauke Zhang        | 101987 |
 #+--------------------+--------------------+--------+
 
+SELECT d.dept_name AS 'Department Name',
+       CONCAT(e.first_name, ' ', e.last_name) AS 'Department Manager',
+       employees.salaries.salary AS 'Salary'
+FROM employees AS e
+JOIN dept_manager dm on e.emp_no = dm.emp_no
+JOIN dept_emp de on e.emp_no = de.emp_no
+JOIN salaries on dm.emp_no = salaries.emp_no
+JOIN departments as d ON d.dept_no = de.dept_no
+WHERE dm.to_date > NOW()
+AND salaries.to_date > NOW()
+ORDER BY d.dept_name;
 
 
 # 5. ****Bonus Find the names of all current employees, their department name, and their current manager's name .
