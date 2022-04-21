@@ -59,6 +59,14 @@ order by dept_name;
 #| Assistant Engineer |    68 |
 #| Manager            |     1 |
 #+--------------------+-------+
+SELECT t.title AS 'Title', COUNT(*) AS 'Total'
+FROM departments as d
+         JOIN dept_emp de on d.dept_no = de.dept_no
+         JOIN titles t on t.emp_no = de.emp_no
+WHERE de.to_date > NOW()
+  and t.to_date > NOW()
+  and d.dept_name = 'Customer Service'
+GROUP BY t.title;
 
 
 # 4. Find the current salary of all current managers.
