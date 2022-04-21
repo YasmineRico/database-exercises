@@ -1,6 +1,6 @@
 USE employees;
 
-#Using the example in the Associative Table Joins section as a guide, write a query that shows each department along with the name of the current manager for that department.
+# 1. Using the example in the Associative Table Joins section as a guide, write a query that shows each department along with the name of the current manager for that department.
 
 #+--------------------+--------------------+
 #| Department Name    | Department Manager |
@@ -25,7 +25,7 @@ FROM employees as e
 where to_date > NOW()
 order by dept_name;
 
-#Find the name of all departments currently managed by women.
+# 2. Find the name of all departments currently managed by women.
 
 #+------------------+--------------------+
 #| Department Name  | Department Manager |
@@ -36,8 +36,17 @@ order by dept_name;
 #| Research         | Hilary Kambil      |
 #+------------------+--------------------+
 
+SELECT d.dept_name AS 'Department Name',
+       CONCAT(e.first_name, ' ', e.last_name) AS 'Department Manager'
+FROM employees AS e
+         JOIN dept_manager dm on e.emp_no = dm.emp_no
+         JOIN departments d on dm.dept_no = d.dept_no
+WHERE to_date > NOW()
+  and e.gender = 'f'
+order by dept_name;
 
-#Find the current titles of employees currently working in the Customer Service department.
+
+# 3. Find the current titles of employees currently working in the Customer Service department.
 
 #+--------------------+-------+
 #| title              | Total |
@@ -52,7 +61,7 @@ order by dept_name;
 #+--------------------+-------+
 
 
-#Find the current salary of all current managers.
+# 4. Find the current salary of all current managers.
 
 #+--------------------+--------------------+--------+
 #| Department Name    | Department Manager | Salary |
@@ -70,8 +79,7 @@ order by dept_name;
 
 
 
-
-#Bonus Find the names of all current employees, their department name, and their current manager's name .
+# 5. ****Bonus Find the names of all current employees, their department name, and their current manager's name .
 
 
 #+----------------------+------------------+-----------------+
