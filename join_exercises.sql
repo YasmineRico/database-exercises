@@ -1,5 +1,6 @@
-#Using the example in the Associative Table Joins section as a guide, write a query that shows each department along with the name of the current manager for that department.
+USE employees;
 
+#Using the example in the Associative Table Joins section as a guide, write a query that shows each department along with the name of the current manager for that department.
 
 #+--------------------+--------------------+
 #| Department Name    | Department Manager |
@@ -14,6 +15,16 @@
 #| Research           | Hilary Kambil      |
 #| Sales              | Hauke Zhang        |
 #+--------------------+--------------------+
+
+SELECT d.dept_name AS 'Department Name',
+       CONCAT(e.first_name, ' ', e.last_name) AS 'Department Manager'
+FROM employees as e
+         JOIN dept_manager as dm
+              ON e.emp_no = dm.emp_no
+         JOIN departments d on dm.dept_no = d.dept_no
+where to_date > NOW()
+order by dept_name;
+
 #Find the name of all departments currently managed by women.
 
 #+------------------+--------------------+
@@ -24,6 +35,8 @@
 #| Human Resources  | Karsten Sigstam    |
 #| Research         | Hilary Kambil      |
 #+------------------+--------------------+
+
+
 #Find the current titles of employees currently working in the Customer Service department.
 
 #+--------------------+-------+
@@ -37,6 +50,8 @@
 #| Assistant Engineer |    68 |
 #| Manager            |     1 |
 #+--------------------+-------+
+
+
 #Find the current salary of all current managers.
 
 #+--------------------+--------------------+--------+
@@ -52,6 +67,10 @@
 #| Research           | Hilary Kambil      |  79393 |
 #| Sales              | Hauke Zhang        | 101987 |
 #+--------------------+--------------------+--------+
+
+
+
+
 #Bonus Find the names of all current employees, their department name, and their current manager's name .
 
 
