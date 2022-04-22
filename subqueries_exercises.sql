@@ -19,6 +19,15 @@ WHERE emp_no IN (
 
 #Find all the current department managers that are female.
 
+select first_name, last_name
+from employees
+where emp_no IN (
+    select emp_no
+    from dept_manager
+    where to_date > NOW()
+)
+  AND gender = 'F';
+
 
 #+------------+------------+
 #| first_name | last_name  |
